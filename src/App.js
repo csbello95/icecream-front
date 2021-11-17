@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import axios from "axios";
+//import axios from "axios";
 import IcecreamList from "./components/IcecreamList";
-import { API_URL } from "./constants";
-import { getIcecreamAxios } from "./api/icecream";
+//import { API_URL } from "./constants";
+//import { getIcecreamAxios } from "./api/icecream";
 import { getIcecreamFetch } from "./api/icecream";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
