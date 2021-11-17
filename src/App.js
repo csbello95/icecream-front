@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import axios from "axios";
+import IcecreamList from "./components/IcecreamList";
+import { API_URL } from "./constants";
+import { getIcecreamAxios } from "./api/icecream";
+import { getIcecreamFetch } from "./api/icecream";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  const [icecreams, setIcecreams] = useState([]);
+
+ 
+  useEffect(() => {
+    //getIcecreamFetch();
+    //const data = await getIcecreamAxios();
+
+    async function fetch() {
+      const data = await getIcecreamFetch();
+      setIcecreams(data);
+    }
+    fetch();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <IcecreamList list={icecreams} />
+    </Container>
   );
 }
 
