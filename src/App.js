@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom"
 import { Container } from "react-bootstrap";
 //import axios from "axios";
 import IcecreamList from "./components/IcecreamList";
+import Menu from "./components/Menu";
+import FormCreate from "./components/Formcreate";
 //import { API_URL } from "./constants";
 //import { getIcecreamAxios } from "./api/icecream";
 import { getIcecreamFetch } from "./api/icecream";
@@ -25,7 +28,16 @@ function App() {
 
   return (
     <Container>
-      <IcecreamList list={icecreams} />
+      <Router>
+        <Menu/>
+        <Routes>
+          <Route path="/icecreams" exact element={<IcecreamList list={icecreams}/>}/>
+          <Route path="/icecreams/create" exact element={<FormCreate/>} />
+          <Route path="/icecreams/update" exact element={<h1>Actualizar Helado</h1>} />
+          <Route path="/icecreams/delete" exact element={<h1>Eliminar Helado</h1>}/>
+        </Routes>
+      </Router>
+      
     </Container>
   );
 }
